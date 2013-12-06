@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical|center_horizontal" >
+
+        <ImageView
+            android:id="@+id/icon_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2sp"
+            />
+
+        <TextView
+            android:id="@+id/app_name_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textIsSelectable="true" >
+        </TextView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/urlId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:autoLink="web"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textIsSelectable="false" />
+
+    <WebView
+        android:id="@+id/about_description"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/urlId" />
+
+</RelativeLayout>
