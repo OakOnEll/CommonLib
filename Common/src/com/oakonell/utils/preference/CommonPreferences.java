@@ -2,6 +2,7 @@ package com.oakonell.utils.preference;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.LauncherActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,9 +10,11 @@ import android.os.Handler;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 import com.oakonell.utils.R;
 import com.oakonell.utils.activity.AppRater;
@@ -24,7 +27,8 @@ public class CommonPreferences implements PreferenceConfigurer {
 	private final PreferenceActivity activity;
 	private final Class<? extends Activity> aboutActivityClass;
 
-	public CommonPreferences(PreferenceActivity activity, PreferenceFinder finder,
+	public CommonPreferences(PreferenceActivity activity,
+			PreferenceFinder finder,
 			Class<? extends Activity> aboutActivityClass) {
 		this.finder = finder;
 		this.activity = activity;
@@ -38,7 +42,9 @@ public class CommonPreferences implements PreferenceConfigurer {
 		if (aboutPref != null) {
 			if (aboutActivityClass == null) {
 				PreferenceGroup parent = getParent(aboutPref);
-				parent.removePreference(aboutPref);
+				if (parent != null) {
+					parent.removePreference(aboutPref);
+				}
 			} else {
 				aboutPref
 						.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -61,7 +67,8 @@ public class CommonPreferences implements PreferenceConfigurer {
 					.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 						@Override
 						public boolean onPreferenceClick(Preference preference) {
-							AppRater.showRateDialog(activity, null);
+							// open the dialog so that user can click "No thanks"
+							AppRater.showRateDialog(activity, null);							
 							return true;
 						}
 					});
@@ -83,23 +90,24 @@ public class CommonPreferences implements PreferenceConfigurer {
 		Preference changesPref = finder.findPreference(activity
 				.getString(R.string.pref_changes_key));
 		if (changesPref != null) {
-			changesPref
-					.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-						@Override
-						public boolean onPreferenceClick(Preference preference) {
-							WhatsNewDisplayer.show(activity, new Handler(),
-									false, null);
-							return true;
-						}
-					});
-		}
-
-		if (!WhatsNewDisplayer.changesFileExists(activity)) {
-			PreferenceCategory otherPrefCat = (PreferenceCategory) finder
-					.findPreference(activity
-							.getString(R.string.pref_other_category));
-			if (otherPrefCat != null) {
-				otherPrefCat.removePreference(changesPref);
+			if (!WhatsNewDisplayer.changesFileExists(activity)) {
+				PreferenceGroup parent = getParent(changesPref);
+				if (parent != null) {
+					parent.removePreference(changesPref);
+				} else {
+					changesPref.setEnabled(false);
+				}
+			} else {
+				changesPref
+						.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+							@Override
+							public boolean onPreferenceClick(
+									Preference preference) {
+								WhatsNewDisplayer.show(activity, new Handler(),
+										false, null);
+								return true;
+							}
+						});
 			}
 		}
 	}
@@ -138,7 +146,11 @@ public class CommonPreferences implements PreferenceConfigurer {
 	}
 
 	private PreferenceGroup getParent(Preference preference) {
-		return getParent(activity.getPreferenceScreen(), preference);
+		PreferenceScreen preferenceScreen = activity.getPreferenceScreen();
+		if (preferenceScreen == null) {
+			return null;
+		}
+		return getParent(preferenceScreen, preference);
 	}
 
 	private PreferenceGroup getParent(PreferenceGroup root,

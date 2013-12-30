@@ -925,7 +925,7 @@ containing a value of this type.
         public static int icon=0x7f020070;
     }
     public static final class id {
-        public static int about_description=0x7f05003b;
+        public static int about_description=0x7f050040;
         public static int abs__action_bar=0x7f050020;
         public static int abs__action_bar_container=0x7f05001f;
         public static int abs__action_bar_subtitle=0x7f050011;
@@ -965,29 +965,34 @@ containing a value of this type.
         public static int abs__textButton=0x7f050013;
         public static int abs__title=0x7f05001b;
         public static int abs__up=0x7f05000b;
-        public static int app_name_id=0x7f050038;
-        public static int decrement=0x7f05003e;
+        public static int app_name_id=0x7f05003d;
+        public static int decrement=0x7f050043;
         public static int disableHome=0x7f050009;
         public static int edit_query=0x7f050026;
         public static int homeAsUp=0x7f050006;
-        public static int icon=0x7f05003f;
-        public static int icon_image=0x7f050037;
-        public static int increment=0x7f05003d;
-        public static int label=0x7f050040;
+        public static int icon=0x7f050044;
+        public static int icon_image=0x7f05003c;
+        public static int increment=0x7f050042;
+        public static int label=0x7f050045;
         public static int linearLayout1=0x7f050033;
         public static int listMode=0x7f050002;
         public static int no_button=0x7f050035;
         public static int normal=0x7f050001;
+        public static int rate_bar=0x7f050038;
+        public static int rate_no_thanks=0x7f05003b;
+        public static int rate_redirect_comment=0x7f050039;
+        public static int rate_remind_later=0x7f05003a;
+        public static int rate_text=0x7f050037;
         public static int remember_checkbox=0x7f050036;
         public static int showCustom=0x7f050008;
         public static int showHome=0x7f050005;
         public static int showTitle=0x7f050007;
         public static int tabMode=0x7f050003;
-        public static int text=0x7f05003c;
+        public static int text=0x7f050041;
         public static int textView1=0x7f050032;
-        public static int urlId=0x7f05003a;
+        public static int urlId=0x7f05003f;
         public static int useLogo=0x7f050004;
-        public static int version=0x7f050039;
+        public static int version=0x7f05003e;
         public static int wrap_content=0x7f050000;
         public static int yes_button=0x7f050034;
     }
@@ -1017,14 +1022,15 @@ containing a value of this type.
         public static int abs__search_view=0x7f030013;
         public static int abs__simple_dropdown_hint=0x7f030014;
         public static int copy_for_facebook_dlg=0x7f030015;
-        public static int generic_about_activity=0x7f030016;
-        public static int number_picker=0x7f030017;
-        public static int share_row=0x7f030018;
-        public static int sherlock_spinner_dropdown_item=0x7f030019;
-        public static int sherlock_spinner_item=0x7f03001a;
+        public static int dialog_app_rater=0x7f030016;
+        public static int generic_about_activity=0x7f030017;
+        public static int number_picker=0x7f030018;
+        public static int share_row=0x7f030019;
+        public static int sherlock_spinner_dropdown_item=0x7f03001a;
+        public static int sherlock_spinner_item=0x7f03001b;
     }
     public static final class string {
-        public static int about_title=0x7f0a0028;
+        public static int about_title=0x7f0a0027;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static int abs__action_bar_home_description=0x7f0a0000;
@@ -1064,37 +1070,39 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static int abs__shareactionprovider_share_with_application=0x7f0a0007;
-        public static int connectionProblem=0x7f0a0017;
-        public static int copied_to_clipboard=0x7f0a001b;
-        public static int copySubjectToClipboardAsWorkAroundForFacebookAppBug=0x7f0a001a;
-        public static int httpError=0x7f0a0016;
-        public static int no=0x7f0a001d;
-        public static int pref_about=0x7f0a0013;
-        public static int pref_about_key=0x7f0a000f;
-        public static int pref_changes=0x7f0a0014;
-        public static int pref_changes_key=0x7f0a0010;
-        public static int pref_confirm_reset_preferences=0x7f0a0015;
-        public static int pref_copy_for_face_book=0x7f0a001f;
-        public static int pref_copy_for_face_book_key=0x7f0a0011;
-        public static int pref_other_category=0x7f0a000e;
-        public static int pref_rate_app=0x7f0a0027;
-        public static int pref_rate_app_key=0x7f0a0026;
+        public static int connectionProblem=0x7f0a0016;
+        public static int copied_to_clipboard=0x7f0a001a;
+        public static int copySubjectToClipboardAsWorkAroundForFacebookAppBug=0x7f0a0019;
+        public static int httpError=0x7f0a0015;
+        public static int no=0x7f0a001c;
+        public static int num_picker_add_sign=0x7f0a0029;
+        public static int num_picker_minus_sign=0x7f0a002a;
+        public static int pref_about=0x7f0a0012;
+        public static int pref_about_key=0x7f0a000e;
+        public static int pref_changes=0x7f0a0013;
+        public static int pref_changes_key=0x7f0a000f;
+        public static int pref_confirm_reset_preferences=0x7f0a0014;
+        public static int pref_copy_for_face_book=0x7f0a001e;
+        public static int pref_copy_for_face_book_key=0x7f0a0010;
+        public static int pref_rate_app=0x7f0a0026;
+        public static int pref_rate_app_key=0x7f0a0025;
         /**  translate 
          */
-        public static int pref_reset_preferences=0x7f0a0012;
+        public static int pref_reset_preferences=0x7f0a0011;
         /**  do not translate 
          */
         public static int pref_reset_preferences_key=0x7f0a000d;
-        public static int rate_app=0x7f0a0020;
-        public static int rate_no_thanks=0x7f0a0023;
-        public static int rate_redirects_to_market=0x7f0a0025;
-        public static int rate_remind_later=0x7f0a0022;
-        public static int rate_text=0x7f0a0021;
-        public static int rate_unknown_app_title=0x7f0a0024;
-        public static int remember_this_choice=0x7f0a001e;
-        public static int share=0x7f0a0018;
-        public static int shareVia=0x7f0a0019;
-        public static int yes=0x7f0a001c;
+        public static int rate_app=0x7f0a001f;
+        public static int rate_no_thanks=0x7f0a0022;
+        public static int rate_redirects_to_market=0x7f0a0024;
+        public static int rate_remind_later=0x7f0a0021;
+        public static int rate_text=0x7f0a0020;
+        public static int rate_unknown_app_title=0x7f0a0023;
+        public static int remember_this_choice=0x7f0a001d;
+        public static int settings=0x7f0a0028;
+        public static int share=0x7f0a0017;
+        public static int shareVia=0x7f0a0018;
+        public static int yes=0x7f0a001b;
     }
     public static final class style {
         public static int Sherlock___TextAppearance_Small=0x7f0b0046;

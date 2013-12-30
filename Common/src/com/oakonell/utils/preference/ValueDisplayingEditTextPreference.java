@@ -35,6 +35,7 @@ public class ValueDisplayingEditTextPreference extends EditTextPreference {
         if (summaryResId != 0) {
             setSummary(getContext().getString(summaryResId, getText()));
         }
+        a.recycle();
     }
 
     public ValueDisplayingEditTextPreference(Context context, AttributeSet attrs) {

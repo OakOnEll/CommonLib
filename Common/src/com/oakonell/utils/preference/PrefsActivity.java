@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.support.v4.app.NavUtils;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
+import com.actionbarsherlock.view.MenuItem;
+import com.oakonell.utils.R;
 import com.oakonell.utils.Utils;
 
 public abstract class PrefsActivity extends SherlockPreferenceActivity {
@@ -21,7 +24,9 @@ public abstract class PrefsActivity extends SherlockPreferenceActivity {
 	protected abstract int[] getPreV11PreferenceResources();
 
 	/** Override me with the header resource id */
-	protected abstract int getV11HeaderResourceId();
+	protected int getV11HeaderResourceId() {
+		return -1;
+	}
 
 	@Override
 	public void onCreate(Bundle aSavedState) {
@@ -30,21 +35,49 @@ public abstract class PrefsActivity extends SherlockPreferenceActivity {
 		Utils.enableStrictMode();
 
 		final ActionBar ab = getSupportActionBar();
-		// set defaults for logo
-		ab.setDisplayUseLogoEnabled(true);
-		ab.setDisplayHomeAsUpEnabled(true);
-		ab.setTitle("Settings");
+		if (ab != null) {
+			// set defaults for logo
+			ab.setDisplayUseLogoEnabled(true);
+			ab.setDisplayHomeAsUpEnabled(true);
+			ab.setTitle(R.string.settings);
+		}
 
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-			for (int eachId : getPreV11PreferenceResources()) {
-				addPreferencesFromResource(eachId);
-				// new PrefActivityPrefFinder(this)
-				PreferenceConfigurer configurer = getPreV11PreferenceConfigurer();
-				if (configurer != null) {
-					configurer.configure();
-				}
-			}
+			addPreV11Resources();
 		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			if (useUpNavigation()) {
+				NavUtils.navigateUpFromSameTask(this);
+			} else {
+				onBackPressed();
+			}
+			return true;
+		}
+		return false;
+	}
+
+	protected boolean useUpNavigation() {
+		return false;
+	}
+
+	protected void addPreV11Resources() {
+		beforePreV11BuildFromResource();
+		for (int eachId : getPreV11PreferenceResources()) {
+			addPreferencesFromResource(eachId);
+			// new PrefActivityPrefFinder(this)
+		}
+		PreferenceConfigurer configurer = getPreV11PreferenceConfigurer();
+		if (configurer != null) {
+			configurer.configure();
+		}
+	}
+
+	protected void beforePreV11BuildFromResource() {
 	}
 
 	protected final PrefActivityPrefFinder getPrefFinder() {
@@ -62,6 +95,9 @@ public abstract class PrefsActivity extends SherlockPreferenceActivity {
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onBuildHeaders(List<Header> target) {
+		int resId = getV11HeaderResourceId();
+		if (resId < 0)
+			return;
 		loadHeadersFromResource(getV11HeaderResourceId(), target);
 	}
 

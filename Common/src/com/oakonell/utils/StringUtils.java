@@ -5,6 +5,10 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
 public class StringUtils {
@@ -12,6 +16,20 @@ public class StringUtils {
 		return string == null || string.trim().length() == 0;
 	}
 
+	public static void applyFlashEnlargeAnimation(TextView textView) {
+		AnimationSet animSet = new AnimationSet(true);
+		Animation scaleUp = new ScaleAnimation(1.0f, 1.5f, 1.0f, 1.5f);
+		Animation anim = new AlphaAnimation(0.0f, 1.0f);
+		animSet.addAnimation(scaleUp);
+		animSet.addAnimation(anim);
+
+		animSet.setDuration(100);
+		animSet.setRepeatCount(3);
+		animSet.setRepeatMode(Animation.REVERSE);
+
+		textView.startAnimation(animSet);
+	}
+	
 	/**
 	 * Sets a hyperlink style to the textview.
 	 */

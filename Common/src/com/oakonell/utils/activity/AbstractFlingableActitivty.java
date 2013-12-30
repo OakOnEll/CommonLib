@@ -48,7 +48,7 @@ public abstract class AbstractFlingableActitivty extends Activity {
     }
 
     protected final void installFlingHandler(View mainview) {
-        gestureDetector = new GestureDetector(new MyGestureDetector());
+        gestureDetector = new GestureDetector(this, new MyGestureDetector());
 
         // Set the touch listener for the main view to be our custom gesture
         // listener
