@@ -61,5 +61,5 @@ public interface DragSource {
 
 	void onDropCompleted(View target, boolean success);
 
-	void onDropCanceled();
+	void onDropCanceled(DragView view);
 }

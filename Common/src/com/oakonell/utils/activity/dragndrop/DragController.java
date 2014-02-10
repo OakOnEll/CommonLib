@@ -333,7 +333,7 @@ public class DragController {
 	 * Stop dragging without dropping.
 	 */
 	public void cancelDrag() {
-		mDragSource.onDropCanceled();
+		mDragSource.onDropCanceled(mDragView);
 		endDrag();
 	}
 
