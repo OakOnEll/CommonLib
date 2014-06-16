@@ -2,7 +2,6 @@ package com.oakonell.utils.preference;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.LauncherActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,8 +12,6 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
 import com.oakonell.utils.R;
 import com.oakonell.utils.activity.AppRater;

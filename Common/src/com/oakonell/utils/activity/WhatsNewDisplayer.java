@@ -3,6 +3,7 @@ package com.oakonell.utils.activity;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Scanner;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -72,7 +73,14 @@ public class WhatsNewDisplayer {
 		} catch (IOException e) {
 			throw new RuntimeException("Error getting changes.txt asset", e);
 		}
-		String message = new java.util.Scanner(open).useDelimiter("\\A").next();
+		Scanner newLineScanner = new java.util.Scanner(open)
+				.useDelimiter("\\A");
+		String message;
+		if (newLineScanner.hasNext()) {
+			message = newLineScanner.next();
+		} else {
+			message = "";
+		}
 		try {
 			open.close();
 		} catch (IOException e) {

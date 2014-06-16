@@ -116,9 +116,7 @@ public class AppRater extends SherlockDialogFragment {
 
 	private Runnable continuation;
 
-	private void initialize(Runnable continuation) {
-		this.continuation = continuation;
-	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
